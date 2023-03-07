@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "http-server": "^14.1.1",
+    "typescript": "^4.9.5"
+  },
+  "scripts": {
+    "start": "node_modules/.bin/concurrently 'node_modules/.bin/tsc --watch' 'node_modules/.bin/http-server ./src/public -a 127.0.0.1'"
+  }
+}
