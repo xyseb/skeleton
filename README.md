@@ -16,7 +16,7 @@ Create a folder on desktop if you not already have one:
 - `$desk=[Environment]::GetFolderPath("Desktop"); New-Item -Path $desk\TestsFormationWeb -Type Directory;`
 ## Command to create a new test project:
 
-- `$target= 'html-css-javascript-web'; $desk=[Environment]::GetFolderPath("Desktop"); $proj = Read-Host -Prompt "What's your project folder name?"; New-Item -Path $desk\$proj -Type Directory; cd $desk\$proj; npx degit https://github.com/xyseb/skeleton#$target; code $desk\$proj`
+- `$target= 'html-css-javascript-web'; $desk=[Environment]::GetFolderPath("Desktop"); $proj = Read-Host -Prompt "What's your project folder name?"; New-Item -Path $desk\TestsFormationWeb\$proj -Type Directory; cd $desk\$proj; npx degit https://github.com/xyseb/skeleton#$target; code $desk\$proj`
 
 # HTML BRANCHES:
 ## html
