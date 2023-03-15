@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "live-server --port=8080 --host=127.0.0.1 --watch=index.html,./js/,./css/ --entry-file=index.html --no-css-inject --wait=500"
+    "start": "live-server --port=8080 --host=127.0.0.1 --browser=CHROME --open=./src/ --watch=./src/* --entry-file=./src/index.html --no-css-inject --wait=500"
   },
   "devDependencies": {
     "live-server": "^1.2.2"
