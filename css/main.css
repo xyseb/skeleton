@@ -1,0 +1,33 @@
+blockquote {
+    margin: 0;
+}
+
+blockquote p {
+    max-width: 80%;
+    margin:0 auto;
+    text-align: center;
+    padding: 15px;
+    background: #eee;
+    border-radius: 5px;
+}
+
+blockquote p::before {
+    content: '\201C';
+}
+
+blockquote p::after {
+    content: '\201D';
+}
+
+.right {
+    text-align: right;
+    margin-right: 10%;
+}
+
+.center {
+    text-align: center;
+}
+
+.red {
+    color:red;
+}
