@@ -1,8 +1,11 @@
 {
   "scripts": {
-    "start": "live-server --port=8080 --host=127.0.0.1 --browser=CHROME --open=./src/ --watch=./src/* --entry-file=./src/index.html --no-css-inject --wait=500"
+    "startx": "concurrently --kill-others --names \"Typescript,LiveServer\" --prefix \"[{name}]\" --prefix-colors \"bgBlue.bold,bgMagenta.bold\" --max-processes=\"50%\" \"tsc --watch\" \"live-server --port=8080 --host=127.0.0.1 --ignore=./src/ts/ --watch=./src/public/ --open=./src/public/ --entry-file=./src/public/index.html --no-css-inject --wait=500\"",
+    "starty": "live-server --port=8080 --host=127.0.0.1 --browser=CHROME --open=./src/ --watch=./src/* --entry-file=./src/index.html --no-css-inject --wait=500",
+    "start": "concurrently --kill-others --names \"SASS,LiveServer\" --prefix \"[{name}]\" --prefix-colors \"bgCyan.bold,bgMagenta.bold\" --max-processes=\"50%\" \"sass --watch --no-unicode ./src/scss:./src/public/css\" \"live-server --port=8080 --host=127.0.0.1 --browser=CHROME --ignore=./src/scss/ --watch=./src/public/ --open=./src/public/ --entry-file=./src/public/index.html --no-css-inject --wait=500\""
   },
   "devDependencies": {
+    "concurrently": "^8.0.1",
     "live-server": "^1.2.2",
     "sass": "^1.60.0"
   }
