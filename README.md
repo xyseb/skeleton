@@ -1,4 +1,4 @@
-# HTML-SASS-JAVASCRIPT-WEB
+# HTML-SASS-JS-WEB
 This is a simple HelloWorld project using HTML ; CSS using SASS ; and javascript. This is the nodejs webapp way to begin coding efficiently on a web frontend project. This is a poor project configuration without bundler like webpack ; rollup ; gulp ; grunt...
 
 To start working on this project:
