@@ -1,10 +1,11 @@
 {
   "scripts": {
-    "start": "concurrently --kill-others --names \"SASS,LiveServer\" --prefix \"[{name}]\" --prefix-colors \"bgCyan.bold,bgMagenta.bold\" --max-processes=\"50%\" \"sass --watch --no-unicode ./src/scss:./src/public/css\" \"live-server --port=8080 --host=127.0.0.1 --browser=CHROME --ignore=./src/scss/ --watch=./src/public/ --open=./src/public/ --entry-file=./src/public/index.html --no-css-inject --wait=500\""
+    "start": "concurrently --kill-others --names \"Typescript,SASS,LiveServer\" --prefix \"[{name}]\" --prefix-colors \"bgBlue.bold,bgCyan.bold,bgMagenta.bold\" --max-processes=\"50%\" \"tsc --watch\" \"sass --watch --no-unicode ./src/scss:./src/public/css\" \"live-server --port=8080 --host=127.0.0.1 --browser=CHROME --ignore=./src/scss/ --watch=./src/public/ --open=./src/public/ --entry-file=./src/public/index.html --no-css-inject --wait=500\""
   },
   "devDependencies": {
     "concurrently": "^8.0.1",
     "live-server": "^1.2.2",
-    "sass": "^1.60.0"
+    "sass": "^1.60.0",
+    "typescript": "^5.0.3"
   }
 }
