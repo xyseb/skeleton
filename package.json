@@ -1,10 +1,19 @@
 {
   "scripts": {
-    "start": "concurrently --kill-others --names \"SASS,LiveServer\" --prefix \"[{name}]\" --prefix-colors \"bgCyan.bold,bgMagenta.bold\" --max-processes=\"50%\" \"sass --watch --no-unicode ./src/scss:./src/public/dist/css\" \"live-server --port=8080 --host=127.0.0.1 --browser=CHROME --ignore=./src/scss/ --watch=./src/public/ --open=./src/public/ --entry-file=./src/public/index.html --no-css-inject --wait=500\""
+    "start": "concurrently --kill-others --names \"SASS,StyleLint:SASS,StyleLint:CSS,LiveServer\" --prefix \"[{name}]\" --prefix-colors \"bgMagenta.bold,bgRed.bold,bgRed.bold,bgYellow.bold\" --max-processes=\"50%\" \"sass --watch --no-unicode --no-error-css ./src/scss:./src/public/dist/css\" \"npm run stylelint:watchsass\" \"npm run stylelint:watchcss\" \"live-server --port=8080 --host=127.0.0.1 --browser=CHROME --ignore=./src/scss/ --watch=./src/public/ --open=./src/public/ --entry-file=./src/public/index.html --no-css-inject --wait=500\"",
+    "stylelint:watchsass": "chokidar \"./src/scss/*.scss\" -c \"npm run stylelint:sass\"",
+    "stylelint:watchcss": "chokidar \"./src/public/css/*.css\"  -c \"npm run stylelint:css\"",
+    "stylelint:sass": "stylelint --stdin --config \"./.stylelintrc.sass.json\" \"./src/scss/*.scss\"",
+    "stylelint:css": "stylelint --stdin \"./src/public/dist/css/*.css\""
   },
   "devDependencies": {
+    "chokidar": "^3.5.3",
+    "chokidar-cli": "^3.0.0",
     "concurrently": "^8.0.1",
     "live-server": "^1.2.2",
-    "sass": "^1.60.0"
+    "sass": "^1.60.0",
+    "stylelint": "^15.4.0",
+    "stylelint-config-sass-guidelines": "^10.0.0",
+    "stylelint-config-standard": "^32.0.0"
   }
 }

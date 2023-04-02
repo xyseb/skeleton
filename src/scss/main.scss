@@ -1,3 +1,5 @@
+$background: #eee;
+
 blockquote {
     margin: 0;
 
@@ -6,7 +8,7 @@ blockquote {
         margin:0 auto;
         text-align: center;
         padding: 15px;
-        background: #eee;
+        background: $background;
         border-radius: 5px;
     }
 
