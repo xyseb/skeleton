@@ -1,8 +1,15 @@
 {
   "scripts": {
-    "start": "live-server --port=8080 --host=127.0.0.1 --browser=CHROME --open=./src/ --watch=./src/* --entry-file=./src/index.html --no-css-inject --wait=500"
+    "start": "concurrently --kill-others --names \"StyleLint:CSS,LiveServer\" --prefix \"[{name}]\" --prefix-colors \"bgRed.bold,bgYellow.bold\" --max-processes=\"50%\" \"npm run stylelint:watchcss\" \"live-server --port=8080 --host=127.0.0.1 --browser=CHROME --watch=./src/ --open=./src/ --entry-file=./src/index.html --no-css-inject --wait=500\"",
+    "stylelint:watchcss": "chokidar \"./src/css/*.css\"  -c \"npm run stylelint\"",
+    "stylelint": "stylelint --stdin \"./src/css/*.css\""
   },
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "chokidar": "^3.5.3",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^8.0.1",
+    "live-server": "^1.2.2",
+    "stylelint": "^15.4.0",
+    "stylelint-config-standard": "^32.0.0"
   }
 }
