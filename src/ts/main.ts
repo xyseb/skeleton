@@ -1,5 +1,4 @@
 const BIG = 123
-var something: any
-something = "😜";
+const something: string = "😜";
 
-console.log('Hello from typescript !' + something);
+console.log(`Hello from typescript ! ${something}`);
