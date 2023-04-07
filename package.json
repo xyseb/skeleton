@@ -1,9 +1,10 @@
 {
   "scripts": {
-    "start": "concurrently --kill-others --names \"Typescript,SASS,LiveServer\" --prefix \"[{name}]\" --prefix-colors \"bgBlue.bold,bgCyan.bold,bgMagenta.bold\" --max-processes=\"50%\" \"tsc --watch\" \"sass --watch --no-unicode ./src/scss:./src/public/css\" \"live-server --port=8080 --host=127.0.0.1 --browser=CHROME --ignore=./src/scss/ --watch=./src/public/ --open=./src/public/ --entry-file=./src/public/index.html --no-css-inject --wait=500\""
+    "start": "concurrently --kill-others --names \"Typescript,SASS,LiveServer,JsonServerAPI\" --prefix \"[{name}]\" --prefix-colors \"bgBlue.bold,bgCyan.bold,bgMagenta.bold,bgGreen.bold\" --max-processes=\"50%\" \"tsc --watch\" \"sass --watch --no-unicode ./src/scss:./src/public/dist/css\" \"live-server --port=8080 --host=127.0.0.1 --browser=CHROME --ignore=./src/scss/ --watch=./src/public/ --open=./src/public/ --entry-file=./src/public/index.html --no-css-inject --wait=500\" \"json-server --port 8081 src/api/api.json --routes src/api/routes.json\""
   },
   "devDependencies": {
     "concurrently": "^8.0.1",
+    "json-server": "^0.17.3",
     "live-server": "^1.2.2",
     "sass": "^1.60.0",
     "typescript": "^5.0.3"

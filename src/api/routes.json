@@ -1,0 +1,4 @@
+{
+    "/api/entities":"/entities",
+    "/api/entities/:entityId":"/entities/:entityId"
+}
