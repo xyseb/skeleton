@@ -1,12 +1,13 @@
 {
   "scripts": {
-    "start": "concurrently --kill-others --names \"SASS,ESLint:JS,StyleLint:SASS,StyleLint:CSS,LiveServer\" --prefix \"[{name}]\" --prefix-colors \"bgMagenta.bold,bgGray.bold,bgRed.bold,bgRed.bold,bgYellow.bold\" --max-processes=\"50%\" \"sass --watch --no-unicode --no-error-css ./src/scss:./src/public/dist/css\" \"npm run _eslint:watchjs\" \"npm run _stylelint:watchsass\" \"npm run _stylelint:watchcss\" \"live-server --port=8080 --host=127.0.0.1 --browser=CHROME --ignore=./src/scss/ --watch=./src/public/ --open=./src/public/ --entry-file=./src/public/index.html --no-css-inject --wait=500\"",
-    "_eslint:watchjs": "chokidar \"./src/**/.js*\" -c \"npm run _eslint:js\"",
-    "_eslint:js": "npx eslint ./src/**  --ext .js",
+    "start": "concurrently --kill-others --names \"SASS,ESLint:JS,StyleLint:SASS,LiveServer\" --prefix \"[{name}]\" --prefix-colors \"bgMagenta.bold,bgGray.bold,bgRed.bold,bgYellow.bold\" --max-processes=\"50%\" \"sass --watch --no-unicode --no-error-css ./src/scss:./src/public/dist/css\" \"npm run _eslint:watchjs\" \"npm run _stylelint:watchsass\" \"live-server --port=8080 --host=127.0.0.1 --browser=CHROME --ignore=./src/scss/ --watch=./src/public/ --open=./src/public/ --entry-file=./src/public/index.html --no-css-inject --wait=500\"",
+    "_eslint:watchjs": "chokidar \"./src/**/*.js\" -c \"npm run _eslint:js\"",
+    "_eslint:js": "npx eslint \"./src\"  --ext .js",
     "_stylelint:watchsass": "chokidar \"./src/scss/*.scss\" -c \"npm run _stylelint:sass\"",
-    "_stylelint:watchcss": "chokidar \"./src/public/css/*.css\"  -c \"npm run _stylelint:css\"",
     "_stylelint:sass": "stylelint --config \"./.stylelintrc.sass.json\" \"./src/scss/*.scss\"",
-    "_stylelint:css": "stylelint \"./src/public/dist/css/*.css\""
+    "__stylelint:watchcss": "chokidar \"./src/public/css/*.css\"  -c \"npm run _stylelint:css\"",
+    "__stylelint:css": "stylelint \"./src/public/dist/css/*.css\"",
+    "build": "echo \"Error: Not implemented yet 😢\" && exit 1"
   },
   "devDependencies": {
     "chokidar": "^3.5.3",
