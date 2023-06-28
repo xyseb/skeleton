@@ -14,6 +14,12 @@ blockquote {
 
     p::before {
         content: '\201C';
+        font-size: 1.8em;
+    }
+
+    p::after {
+        content: '\201D';
+        font-size: 1.8em;
     }
 }
 

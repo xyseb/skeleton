@@ -1,0 +1,55 @@
+{
+    "entities": [
+        {
+            "id": 1,
+            "name": "entity-1",
+            "boolParam": false,
+            "collectionParam": [
+                {
+                    "id": 1,
+                    "name": "p1",
+                    "param1": false
+                },
+                {
+                    "id": 2,
+                    "name": "p2",
+                    "param1": true
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "entity-2",
+            "boolParam": false,
+            "collectionParam": [
+                {
+                    "id": 1,
+                    "name": "p1",
+                    "param1": false
+                },
+                {
+                    "id": 2,
+                    "name": "p2",
+                    "param1": true
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "entity-3",
+            "boolParam": false,
+            "collectionParam": [
+                {
+                    "id": 1,
+                    "name": "p1",
+                    "param1": false
+                },
+                {
+                    "id": 2,
+                    "name": "p2",
+                    "param1": true
+                }
+            ]
+        }
+    ]
+}

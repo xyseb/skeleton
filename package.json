@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "concurrently --kill-others --names \"Typescript,SASS,ESLint:TS,StyleLint:SASS,StyleLint:CSS,LiveServer\" --prefix \"[{name}]\" --prefix-colors \"bgBlue.bold,bgMagenta.bold,bgGrey.bold,bgRed.bold,bgRed.bold,bgYellow.bold\" --max-processes=\"75%\" \"tsc --watch\" \"sass --watch --no-unicode --no-error-css ./src/scss:./src/public/dist/css\" \"npm run eslint:watchts\" \"npm run stylelint:watchsass\" \"npm run stylelint:watchcss\" \"live-server --port=8080 --host=127.0.0.1 --browser=CHROME --ignore=./src/scss/ --watch=./src/public/ --open=./src/public/ --entry-file=./src/public/index.html --no-css-inject --wait=500\"",
+    "start": "concurrently --kill-others --names \"Typescript,SASS,ESLint:TS,StyleLint:SASS,StyleLint:CSS,JsonServerAPI,LiveServer\" --prefix \"[{name}]\" --prefix-colors \"bgBlue.bold,bgMagenta.bold,bgGrey.bold,bgRed.bold,bg.bold,bgCyan.bold,bgYellow.bold\" --max-processes=\"75%\" \"tsc --watch\" \"sass --watch --no-unicode --no-error-css ./src/scss:./src/public/dist/css\" \"npm run eslint:watchts\" \"npm run stylelint:watchsass\" \"npm run stylelint:watchcss\" \"json-server --port 8081 src/api/api.json --routes src/api/routes.json\" \"live-server --port=8080 --host=127.0.0.1 --browser=CHROME --ignore=./src/scss/ --watch=./src/public/ --open=./src/public/ --entry-file=./src/public/index.html --no-css-inject --wait=500\"",
     "eslint:watchts": "chokidar \"./src/ts/*.ts\" -c \"npm run eslint:ts\"",
     "eslint:ts": "eslint --ext .ts \"./src/ts/**\"",
     "stylelint:watchsass": "chokidar \"./src/scss/*.scss\" -c \"npm run stylelint:sass\"",
@@ -15,6 +15,7 @@
     "chokidar-cli": "^3.0.0",
     "concurrently": "^8.0.1",
     "eslint": "^8.37.0",
+    "json-server": "^0.17.3",
     "live-server": "^1.2.2",
     "sass": "^1.60.0",
     "stylelint": "^15.4.0",
