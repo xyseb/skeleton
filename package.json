@@ -1,26 +1,17 @@
 {
+  "name": "monorepo",
+  "workspaces": [
+    "api",
+    "client"
+  ],
   "scripts": {
-    "start": "concurrently --kill-others --names \"Typescript,SASS,ESLint:TS,StyleLint:SASS,StyleLint:CSS,JsonServerAPI,LiveServer\" --prefix \"[{name}]\" --prefix-colors \"bgBlue.bold,bgMagenta.bold,bgGrey.bold,bgRed.bold,bg.bold,bgCyan.bold,bgYellow.bold\" --max-processes=\"75%\" \"tsc --watch\" \"sass --watch --no-unicode --no-error-css ./src/scss:./src/public/dist/css\" \"npm run eslint:watchts\" \"npm run stylelint:watchsass\" \"npm run stylelint:watchcss\" \"json-server --port 8081 src/api/api.json --routes src/api/routes.json\" \"live-server --port=8080 --host=127.0.0.1 --browser=CHROME --ignore=./src/scss/ --watch=./src/public/ --open=./src/public/ --entry-file=./src/public/index.html --no-css-inject --wait=500\"",
-    "eslint:watchts": "chokidar \"./src/ts/*.ts\" -c \"npm run eslint:ts\"",
-    "eslint:ts": "eslint --ext .ts \"./src/ts/**\"",
-    "stylelint:watchsass": "chokidar \"./src/scss/*.scss\" -c \"npm run stylelint:sass\"",
-    "stylelint:watchcss": "chokidar \"./src/public/css/*.css\"  -c \"npm run stylelint:css\"",
-    "stylelint:sass": "stylelint --config \"./.stylelintrc.sass.json\" \"./src/scss/*.scss\"",
-    "stylelint:css": "stylelint \"./src/public/dist/css/*.css\""
+    "start": "concurrently --kill-others --names \"ESLint,StyleLint,JsonServerAPI,Vite\" --prefix \"[{name}]\" --prefix-colors \"bgRed.bold,bgGrey.bold,bgBlue.bold,bgYellow.bold\" --max-processes=\"75%\" \"npm run eslint\" \"npm run stylelint\" \"npm run start:api\" \"npm run start:client",
+    "start:client": "npm run --workspace client dev",
+    "start:api": "npm run --workspace api start",
+    "eslint": "eslint ./client/src/**/*.{ts,tsx,json,cjs,mjs,js}",
+    "stylelint": "stylelint -config ./.stylelintrc.js --config-basedir ./client ./client/src/**/*.scss"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.57.0",
-    "@typescript-eslint/parser": "^5.57.0",
-    "chokidar": "^3.5.3",
-    "chokidar-cli": "^3.0.0",
-    "concurrently": "^8.0.1",
-    "eslint": "^8.37.0",
-    "json-server": "^0.17.3",
-    "live-server": "^1.2.2",
-    "sass": "^1.60.0",
-    "stylelint": "^15.4.0",
-    "stylelint-config-sass-guidelines": "^10.0.0",
-    "stylelint-config-standard": "^32.0.0",
-    "typescript": "^5.0.3"
+    "vite-plugin-checker": "^0.6.2"
   }
 }

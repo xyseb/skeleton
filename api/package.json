@@ -1,0 +1,9 @@
+{
+  "name": "@monorepo/api",
+  "scripts": {
+    "start": "json-server --port 8081 ./api.json --routes ./routes.json"
+  },
+  "devDependencies": {
+    "json-server": "^0.17.3"
+  }
+}
