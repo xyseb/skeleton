@@ -21,7 +21,7 @@ export default defineConfig({
             lintCommand: "eslint ./src/**/*",
         },
         stylelint: {
-            lintCommand: "stylelint ../client/src/**/*.{scss,css}",
+            lintCommand: "stylelint \"./src/**/*.{scss,css}\"",
         },
     })
   ],
@@ -39,5 +39,5 @@ export default defineConfig({
       strictPort: true,
       open: true,
   },
-  cacheDir: "../node_modules/.vite" // Force le cache de pre-bundling de vite dans le cas d'un monorepo pour evité d'avoir un dossier node_modules à la racine de l'app vite.
+  cacheDir: "../../node_modules/.vite" // Force le cache de pre-bundling de vite dans le cas d'un monorepo pour evité d'avoir un dossier node_modules à la racine de l'app vite (semble ne pas fonctionner. A investiguer mais fonctionnel).
 });

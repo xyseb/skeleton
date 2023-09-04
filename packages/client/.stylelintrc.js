@@ -7,7 +7,7 @@
  *    Celle-ci sont surcharger par stylelint-config-recommended
  *    Celle-ci sont surcharger par stylelint-config-standard
  *
- * L'usage du plugin stylelint-scss ajoute d'avantage de rules aux rules précédente
+ * L'usage du plugin stylelint-scss ajoute d'avantage de rules aux rules prÃ©cÃ©dente
  *     Ce plugin est introduit par stylelint-config-recommended-scss et ne recommande par sont usage ici.
  *
  * L'usage de stylelint-config-standard-scss etandant stylelint-config-standard & stylelint-config-recommended-scss
@@ -15,7 +15,7 @@
  *     surcharge stylelint-config-recommended. C'est la surcharge la plus standard de ce fait.
  *
  *
- * L'usage de stylelint-no-unsupported-browser-features permet de lever des avertissements sur la compatibilité avec
+ * L'usage de stylelint-no-unsupported-browser-features permet de lever des avertissements sur la compatibilitÃ© avec
  * les navigateurs inclus dans notre couverture browserslist
  */
 module.exports = {
@@ -26,12 +26,12 @@ module.exports = {
         "stylelint-no-unsupported-browser-features"
     ],
     rules: {
-        "no-invalid-position-at-import-rule": false,
+        "no-invalid-position-at-import-rule": null,
         "plugin/no-unsupported-browser-features": [true, {
             "severity": "warning",
             "ignorePartialSupport": false
         }],
-        "scss/at-mixin-argumentless-call-parentheses": false
+        "scss/at-mixin-argumentless-call-parentheses": null
     },
     overrides: [
     ],
