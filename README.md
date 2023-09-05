@@ -18,6 +18,14 @@ Create a folder on desktop if you not already have one:
 
 - `$target= 'html-css-javascript-web'; $desk=[Environment]::GetFolderPath("Desktop"); $proj = Read-Host -Prompt "What's your project folder name?"; New-Item -Path $desk\TestsFormationWeb\$proj -Type Directory; cd $desk\TestsFormationWeb\$proj; npx degit https://github.com/xyseb/skeleton#$target; code $desk\TestsFormationWeb\$proj`
 
+# TP BRANCHES (With API and dev tools):
+## Full featured React using Vite:
+`npx degit https://github.com/xyseb/skeleton#react-vite-sass-ts-webapi-webdev`
+## Full featured Typescript:
+`npx degit https://github.com/xyseb/skeleton#html-sass-ts-webapi-webdev`
+
+---
+
 # HTML BRANCHES:
 ## html
 `npx degit https://github.com/xyseb/skeleton#html`
