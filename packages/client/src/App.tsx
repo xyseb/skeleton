@@ -5,6 +5,9 @@ import './App.scss';
 //import Index from './components/Index';
 import Index from './components/Index/Index';
 import useSharedCounter from './hooks/useSharedCounter';
+import { Provider as JotaiProvider } from "jotai";
+import jotaiStore, {centreNameAtom} from './stores/GeneralStore';
+import { useAtomValue } from 'jotai';
 
 function App() {
   // timer utiliser pour contrôle du rendu ou non du composant
@@ -15,16 +18,20 @@ function App() {
   // Créez une ref pour stocker la valeur précédente de hookCount
   const prevHookCountRef = useRef<number | null>(null);
 
+  const testAtom = useAtomValue(centreNameAtom);
+
   useEffect(() => {
-    console.log("App first time render");
-    const intervalId = setInterval(() => {
-      setTimer(timer => timer + 1)
-    }, 2000);
+    console.log("App::render::first");
+    // const intervalId = setInterval(() => {
+    //   setTimer(timer => timer + 1)
+    // }, 2000);
+
     return () => {
-      console.log("App cleanup");
-      clearInterval(intervalId);
-    }
+      console.log("App::cleanup");
+      // clearInterval(intervalId);
+    };
   }, []);
+  console.log("App::render");
 
   useEffect(() => {
     console.log("App render on hookCount changes", hookCount);
@@ -39,15 +46,16 @@ function App() {
   }, [hookCount]);
 
   return (
+    <JotaiProvider store={jotaiStore}>
     <div className="App">
       <div>
-        <a href="https://vitejs.dev" target="_blank">
+        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
         </a>
-        <a href="https://reactjs.org" target="_blank">
+        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-        <a href="https://jotai.org" target="_blank">
+        <a href="https://jotai.org" target="_blank" rel="noreferrer">
           <img src={jotaiLogo} className="logo" alt="Jotai logo" />
         </a>
       </div>
@@ -57,12 +65,14 @@ function App() {
       <br/>
       {indexIsVisible && <Index/>}
       <div className='debugInfos'>
-        <p>Index::strState = 'local to Index'</p>
-        <p>Index::count = ''</p>
-        <p>Index::hookCount = '{hookCount}'</p>
+        <p>Index::strState = &apos;local to Index&apos;</p>
+        <p>Index::count = &apos;&apos;</p>
+        <p>Index::hookCount = &apos;{hookCount}&apos;</p>
+        <p>Index::GeneralStore::atom = &apos;{testAtom}&apos;</p>
       </div>
     </div>
+    </JotaiProvider>
   );
 }
 
-export default App
+export default App;

@@ -1,5 +1,10 @@
 .Index {
   border: 2px solid #117A65;
+  padding: 15px;
+
+  & h1:first-of-type {
+    margin-top: 0;
+  }
 
   & .card {
     padding: 2em;
