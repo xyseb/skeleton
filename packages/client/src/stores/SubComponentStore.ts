@@ -1,14 +1,14 @@
 import { atom, createStore, WritableAtom } from 'jotai';
 
-type StoreValue = {
-  centreName: string;
-}
+// type StoreValue = {
+//   centreName: string;
+// }
 
-const initialState: StoreValue = {
-  centreName: 'valeur initiale',
-};
+// const initialState: StoreValue = {
+//   centreName: 'valeur initiale',
+// };
 
-const GeneralStore = createStore();
+const SubComponentStore = createStore();
 
 // export const centreNameAtom: WritableAtom<string, string[], void> = atom(
 //   initialState.centreName,
@@ -18,12 +18,12 @@ const GeneralStore = createStore();
 //   }
 // );
 
-const centreNameAtom = atom<string>('centreNameAtomUndefined');
-centreNameAtom.debugLabel = "GeneralStore::centreNameAtom";
+const anotherAtom = atom<string>('another');
+anotherAtom.debugLabel = "SubComponentStore::anotherAtom";
 //GeneralStore.sub(centreNameAtom, () => { console.log('ola'); });
 // GeneralStore.set(centreNameAtom, initialState.centreName); // Ajoutez cet atome d'état au magasin
-export { centreNameAtom };
-export default GeneralStore;
+export { anotherAtom };
+export default SubComponentStore;
 // import { atom, Atom, createStore, SetStateAction, WritableAtom } from 'jotai';
 
 // type GeneralStoreValues = {

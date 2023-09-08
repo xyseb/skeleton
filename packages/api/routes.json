@@ -1,4 +1,5 @@
 {
+    "/api/centre":"/centre",
     "/api/entities":"/entities",
     "/api/entities/:entityId":"/entities/:entityId"
 }
