@@ -47,7 +47,7 @@ const DebugInfo:React.FC = () => {
   
 
   return (
-    <div className="debug-info">
+    <div className="debug-info ml-1">
         {/* <h1>DebugInfo timer = {timer}</h1> */}
         <p>DebugInfo::strState = &apos;local to Index&apos;</p>
         <p>DebugInfo::count = &apos;&apos;</p>

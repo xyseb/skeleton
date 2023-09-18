@@ -63,32 +63,39 @@ const IndexPage:React.FC = () => {
 
     return (
         <div className="index-page">
-            <p className="left c3 indent2">&lt;IndexPage&gt;</p>
-            <h2>Index::timer = {timer}</h2>
-            <button onClick={() => setTestAtom(!testAtom)}>Test changing an Atom state: {!testAtom ? '🙈' : '🙉'}</button>
+            <p className="left c3">&lt;IndexPage&gt;</p>
+            <div className="ml-1 bl-index-page">
+
+            <div>
+                <h2>Index::timer = {timer}</h2>
+                <button onClick={() => setTestAtom(!testAtom)}>Test changing an Atom state: {!testAtom ? '🙈' : '🙉'}</button>
+            </div>
             {testAtom &&
                 <div className="card">
-                    <p className="left c41 indent1">&lt;div&gt;</p>
-                    <button onClick={() => setToggleEmoji(!toggleEmoji)}>Render Index again {toggleEmoji ? '🙈' : '🙉'}</button>
-                    <br />
-                    <button onClick={() => setStrState("Updated state")}>StrState = {strState}</button>
-                    <button onClick={() => setCount(count + 1)}>
-                        count is {count}
-                    </button>
-                    <button onClick={() => setSharedCount(hookCount + 1)}>
-                        hookCount is {hookCount}
-                    </button>
-                    <p className="left c41 indent1">&lt;div/&gt;</p>
+                    <p className="left c3">&lt;div&gt;</p>
+                    <div>
+                        <button onClick={() => setToggleEmoji(!toggleEmoji)}>Render Index again {toggleEmoji ? '🙈' : '🙉'}</button>
+                        <br />
+                        <button onClick={() => setStrState("Updated state")}>StrState = {strState}</button>
+                        <button onClick={() => setCount(count + 1)}>
+                            count is {count}
+                        </button>
+                        <button onClick={() => setSharedCount(hookCount + 1)}>
+                            hookCount is {hookCount}
+                        </button>
+                    </div>
+                    <p className="left c3">&lt;div/&gt;</p>
                 </div>
             }
             <div className="sub-index">
                 <Provider store={SubComponentStore}>
-                    <p className="left c4 indent3">&lt;Provider store=&quot;SubComponentStore&quot;&gt;</p>
+                    <p className="left c4">&lt;Provider store=&quot;SubComponentStore&quot;&gt;</p>
                     <SubComponent />
-                    <p className="left c4 indent3">&lt;Provider/&gt;</p>
+                    <p className="left c4">&lt;Provider/&gt;</p>
                 </Provider>
             </div>
-            <p className="left c3 indent2">&lt;IndexPage/&gt;</p>
+            </div>
+            <p className="left c3">&lt;IndexPage/&gt;</p>
         </div>
     );
 };

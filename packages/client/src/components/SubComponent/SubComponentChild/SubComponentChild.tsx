@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import './SubComponentChild.scss';
-import { useStore } from 'jotai';
+import { useAtomValue, useStore } from 'jotai';
 import GeneralStore, { GeneralStoreAtoms } from '../../../stores/GeneralStore';
 import SubComponentStore, { SubComponentStoreAtoms } from '../../../stores/SubComponentStore';
 import { atomToggle } from '../../Index/IndexPage';
 
 
-const SubComponentChild:React.FC = () => {
+const SubComponentChild: React.FC = () => {
+    const centreNameAtomValue = useAtomValue(GeneralStoreAtoms.centreNameAtom);
+
     const generalStore = useStore({ store: GeneralStore });
     const subComponentStore = useStore({ store: SubComponentStore });
 
@@ -42,12 +44,17 @@ const SubComponentChild:React.FC = () => {
 
 
     return (
-        <div className="sub-component-child">
-            <p className="left indent4">&lt;SubComponentChild&gt;</p>
-            <p>ici val from substore</p>
-            <p className="left indent4  ">&lt;SubComponentChild/&gt;</p>
+        <div className="sub-component-child ml-1">
+            <p className="left">&lt;SubComponentChild&gt;</p>
+            <div className="ml-1 bl-sub-component-child">
+                <p>Index::strState = &apos;local to Index&apos;</p>
+                <p>Index::count = &apos;&apos;</p>
+                <p>Index::hookCount = &apos;{/*hookCount*/}&apos;</p>
+                <p>Index::useAtomValue(centreNameAtom) = &apos;{centreNameAtomValue}&apos;</p>
+            </div>
+            <p className="left">&lt;SubComponentChild/&gt;</p>
         </div>
     );
-}
+};
 
 export default SubComponentChild;

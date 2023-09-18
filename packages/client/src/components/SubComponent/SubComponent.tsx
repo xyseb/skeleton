@@ -22,10 +22,12 @@ const SubComponent:React.FC = () => {
   
 
   return (
-    <div className="sub-component">
-        <p className='left indent4'>&lt;SubComponent&gt;</p>
-        <SubComponentChild/>
-        <p className='left indent4'>&lt;SubComponent/&gt;</p>
+    <div className="sub-component ml-1">
+        <p className='left'>&lt;SubComponent&gt;</p>
+        <div className="bl-sub-component">
+          <SubComponentChild/>
+        </div>
+        <p className='left'>&lt;SubComponent/&gt;</p>
     </div>
   );
 }

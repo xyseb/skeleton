@@ -4,27 +4,31 @@
   // margin-left: .5rem;
   // width: calc(100% - .5rem);
 
+  .bl-index-page {
+    border-left: 1px dashed #157997;
+  }
 
-    .left {
-        &.c3 {
-            color: #157997;
-        }
 
-        &.c4 {
-            color: red;
-        }
-
-        &.c41 {
-          color: #0d4d61;
-        }
+  .left {
+    &.c3 {
+      color: #157997;
     }
+
+    &.c4 {
+      color: red;
+    }
+
+    &.c41 {
+      color: #0d4d61;
+    }
+  }
 
   // & h2:first-of-type {
   //   margin-top: 0;
   // }
 
   & .card {
-    padding: 2em;
+    padding: 2em 0;
 
     button {
       margin: 3px;

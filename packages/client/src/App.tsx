@@ -7,11 +7,10 @@ import useSharedCounter from './hooks/useSharedCounter';
 import IndexPage from './components/Index/IndexPage';
 import DebugInfo from './components/DebugInfo/DebugInfo';
 
-// import reactLogo from './assets/react.svg';
-// import jotaiLogo from './assets/jotai.png';
 import './App.scss';
 
 const App:React.FC = () => {
+    const withDevTools = true;
     // timer utiliser pour contrôle du rendu ou non du composant
     const [timer, setTimer] = useState(0);
     const [indexIsVisible, setIndexIsVisible] = useState(true);
@@ -49,36 +48,33 @@ const App:React.FC = () => {
 
     return (
         <>
-            <DevTools />
+            { withDevTools && <DevTools /> }
             <div className="app">
                 <p className="left c1">&lt;App&gt;</p>
-                <p className="left c2 indent1">&lt;Provider store=&quot;GeneralStore&quot;&gt;</p>
-                <JotaiProvider store={GeneralStore}>
-                    {/* <div>
-                        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-                            <img src="/vite.svg" className="logo" alt="Vite logo" />
-                        </a>
-                        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-                            <img src={reactLogo} className="logo react" alt="React logo" />
-                        </a>
-                        <a href="https://jotai.org" target="_blank" rel="noreferrer">
-                            <img src={jotaiLogo} className="logo" alt="Jotai logo" />
-                        </a>
-                    </div> */}
-                    <h2 className="indent1">App::timer = {timer}</h2>
-                    <div className="indent1"><button onClick={() => setIndexIsVisible(!indexIsVisible)}>indexIsVisible = {indexIsVisible ? "True" : "False"}</button></div>
-                    {indexIsVisible && <IndexPage />}
-                    <div className="debug">
-                        <div className='app-info'>
-                            <p>Index::strState = &apos;local to Index&apos;</p>
-                            <p>Index::count = &apos;&apos;</p>
-                            <p>Index::hookCount = &apos;{hookCount}&apos;</p>
-                            <p>Index::useAtomValue(centreNameAtom) = &apos;{centreNameAtomValue}&apos;</p>
+                <div className="ml-1 bl-app">
+                    <p className="left c2">&lt;Provider store=&quot;GeneralStore&quot;&gt;</p>
+                    <JotaiProvider store={GeneralStore}>
+                        <div className="ml-2">
+                            <h2 className="left">App::timer = {timer}</h2>
+                            <button onClick={() => setIndexIsVisible(!indexIsVisible)}>indexIsVisible = {indexIsVisible ? "True" : "False"}</button>
+                            {indexIsVisible && <IndexPage />}
+                            <div className="debug">
+                                <p className="left c1">&lt;div className=&quot;app-info&quot;&gt;</p>
+                                <div className='app-info ml-1'>
+                                    <p>Index::strState = &apos;local to Index&apos;</p>
+                                    <p>Index::count = &apos;&apos;</p>
+                                    <p>Index::hookCount = &apos;{hookCount}&apos;</p>
+                                    <p>Index::useAtomValue(centreNameAtom) = &apos;{centreNameAtomValue}&apos;</p>
+                                </div>
+                                <p className="left c1">&lt;/div&gt;</p>
+                                <p className="left c42">&lt;DebugInfo&gt;</p>
+                                <DebugInfo />
+                                <p className="left c42">&lt;/DebugInfo&gt;</p>
+                            </div>
                         </div>
-                        <DebugInfo />
-                    </div>
-                </JotaiProvider>
-                <p className="left c2 indent1">&lt;Provider/&gt;</p>
+                    </JotaiProvider>
+                    <p className="left c2">&lt;Provider/&gt;</p>
+                </div>
                 <p className="left c1">&lt;App/&gt;</p>
             </div>
         </>

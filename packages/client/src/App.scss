@@ -8,8 +8,23 @@
         &.c2 {
             color: red;
         }
+
+        &.c42 {
+            color: orange;
+        }
     }
 
+    .ml-1 {
+        padding-left: 1em;
+    }
+
+    .ml-2 {
+        margin-left: 2em;
+    }
+
+    .bl-app {
+        border-left: 1px dashed #117A65;
+    }
     // button {
     //     border-radius: 8px;
     //     border: 1px solid transparent;
@@ -65,14 +80,15 @@
     .debug {
         width: 100%;
         margin-top: 5px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: space-between;
+
+        // display: inline-flex;
+        //align-items: center;
+        //justify-content: space-between;
     }
 
     .app-info {
         width: 50%;
-        border: 1px solid crimson;
+        border-left: 1px dashed #117A65;
     }
 
 
