@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { DevTools } from 'jotai-devtools';
 import { Provider as JotaiProvider, useAtomValue } from "jotai";
-import GeneralStore, { centreNameAtom } from './stores/GeneralStore';
+import GeneralStore, { GeneralStoreAtoms } from './stores/GeneralStore';
 import useSharedCounter from './hooks/useSharedCounter';
 
 import Index from './components/Index/Index';
@@ -20,7 +20,7 @@ function App() {
     // Créez une ref pour stocker la valeur précédente de hookCount
     const prevHookCountRef = useRef<number | null>(null);
 
-    const centreNameAtomValue = useAtomValue(centreNameAtom);
+    const centreNameAtomValue = useAtomValue(GeneralStoreAtoms.centreNameAtom);
 
     useEffect(() => {
         console.log("App::render::first");
@@ -67,8 +67,6 @@ function App() {
                     </div> */}
                     <h2 className="indent1">App::timer = {timer}</h2>
                     <div className="indent1"><button onClick={() => setIndexIsVisible(!indexIsVisible)}>indexIsVisible = {indexIsVisible ? "True" : "False"}</button></div>
-                    <br />
-                    <br />
                     {indexIsVisible && <Index />}
                     <div className="debug">
                         <div className='app-info'>

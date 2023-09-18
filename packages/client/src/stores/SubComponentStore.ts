@@ -1,4 +1,31 @@
-import { atom, createStore, WritableAtom } from 'jotai';
+import { Atom, atom, createStore, WritableAtom } from 'jotai';
+
+type StoreAtoms = {
+    anotherNameAtom: WritableAtom<string, string[], void>;
+}
+
+type StoreValue = {
+  anotherName: string;
+}
+
+const initialState: StoreValue = {
+    anotherName: 'another initialized value',
+};
+
+function initStore(initialState:StoreValue): {SubComponentStore:any, SubComponentStoreAtoms:StoreAtoms} {
+  const store = createStore();
+  const anotherNameAtom = atom<string>('anotherNameAtomUndefined');
+  anotherNameAtom.debugLabel = "SubComponentStore::anotherNameAtom";
+  store.set(anotherNameAtom, initialState.anotherName); // Ajoutez cet atome d'état au magasin
+  return {SubComponentStore:store, SubComponentStoreAtoms:{'anotherNameAtom': anotherNameAtom}};
+}
+
+const {SubComponentStore, SubComponentStoreAtoms} = initStore(initialState);
+
+export { SubComponentStoreAtoms };
+export default SubComponentStore;
+
+////import { atom, createStore, WritableAtom } from 'jotai';
 
 // type StoreValue = {
 //   centreName: string;
@@ -8,7 +35,7 @@ import { atom, createStore, WritableAtom } from 'jotai';
 //   centreName: 'valeur initiale',
 // };
 
-const SubComponentStore = createStore();
+////const SubComponentStore = createStore();
 
 // export const centreNameAtom: WritableAtom<string, string[], void> = atom(
 //   initialState.centreName,
@@ -18,12 +45,12 @@ const SubComponentStore = createStore();
 //   }
 // );
 
-const anotherAtom = atom<string>('another');
-anotherAtom.debugLabel = "SubComponentStore::anotherAtom";
+////const anotherAtom = atom<string>('another');
+////anotherAtom.debugLabel = "SubComponentStore::anotherAtom";
 //GeneralStore.sub(centreNameAtom, () => { console.log('ola'); });
 // GeneralStore.set(centreNameAtom, initialState.centreName); // Ajoutez cet atome d'état au magasin
-export { anotherAtom };
-export default SubComponentStore;
+////export { anotherAtom };
+////export default SubComponentStore;
 // import { atom, Atom, createStore, SetStateAction, WritableAtom } from 'jotai';
 
 // type GeneralStoreValues = {

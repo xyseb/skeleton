@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './Index.scss';
 import useSharedCounter from '../../hooks/useSharedCounter';
 import { Provider, atom, useAtom, useAtomValue, useStore } from 'jotai';
-import GeneralStore, { centreNameAtom } from '../../stores/GeneralStore';
+import GeneralStore, { GeneralStoreAtoms } from '../../stores/GeneralStore';
 import SubComponent from '../SubComponent/SubComponent';
 import SubComponentStore, { anotherAtom } from '../../stores/SubComponentStore';
 
@@ -22,11 +22,11 @@ function Index() {
     const generalStore = useStore({ store: GeneralStore });
     const subComponentStore = useStore({ store: SubComponentStore });
 
-    const a = generalStore.get(centreNameAtom);
+    const a = generalStore.get(GeneralStoreAtoms.centreNameAtom);
     const a2 = generalStore.get(anotherAtom);
     const a3 = generalStore.get(atomToggle);
     const b = subComponentStore.get(anotherAtom);
-    const b2 = subComponentStore.get(centreNameAtom);
+    const b2 = subComponentStore.get(GeneralStoreAtoms.centreNameAtom);
     const b3 = subComponentStore.get(atomToggle);
     console.log('generalStore:', generalStore);
     console.log('generalStore::a:', a);

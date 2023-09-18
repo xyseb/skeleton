@@ -1,4 +1,8 @@
-import { atom, createStore, WritableAtom } from 'jotai';
+import { Atom, atom, createStore, WritableAtom } from 'jotai';
+
+type StoreAtoms = {
+  centreNameAtom: WritableAtom<string, string[], void>;
+}
 
 type StoreValue = {
   centreName: string;
@@ -8,7 +12,7 @@ const initialState: StoreValue = {
   centreName: 'valeur initiale',
 };
 
-const GeneralStore = createStore();
+//// const GeneralStore = createStore();
 
 // export const centreNameAtom: WritableAtom<string, string[], void> = atom(
 //   initialState.centreName,
@@ -18,11 +22,23 @@ const GeneralStore = createStore();
 //   }
 // );
 
-const centreNameAtom = atom<string>('centreNameAtomUndefined');
-centreNameAtom.debugLabel = "GeneralStore::centreNameAtom";
+function initStore(initialState:StoreValue): {GeneralStore:any, GeneralStoreAtoms:StoreAtoms} {
+  const store = createStore();
+  const centreNameAtom = atom<string>('centreNameAtomUndefined');
+  centreNameAtom.debugLabel = "GeneralStore::centreNameAtom";
+  store.set(centreNameAtom, initialState.centreName); // Ajoutez cet atome d'état au magasin
+  return {GeneralStore:store, GeneralStoreAtoms:{'centreNameAtom': centreNameAtom}};
+}
+
+////const centreNameAtom = atom<string>('centreNameAtomUndefined');
+////centreNameAtom.debugLabel = "GeneralStore::centreNameAtom";
 //GeneralStore.sub(centreNameAtom, () => { console.log('ola'); });
 // GeneralStore.set(centreNameAtom, initialState.centreName); // Ajoutez cet atome d'état au magasin
-export { centreNameAtom };
+const {GeneralStore, GeneralStoreAtoms} = initStore(initialState);
+// const GeneralStore = initializedStore.store
+// const centreNameAtom = initializedStore.atoms.centreNameAtom
+
+export { GeneralStoreAtoms };
 export default GeneralStore;
 // import { atom, Atom, createStore, SetStateAction, WritableAtom } from 'jotai';
 
