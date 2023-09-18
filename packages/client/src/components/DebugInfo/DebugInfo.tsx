@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import './DebugInfo.scss';
 import useSharedCounter from '../../hooks/useSharedCounter';
 import { atom, useAtom, useAtomValue, useStore } from 'jotai';
-import GeneralStore, { centreNameAtom } from '../../stores/GeneralStore';
+import GeneralStore, { GeneralStoreAtoms } from '../../stores/GeneralStore';
 
 //const atomToggle = atom<boolean>(true);
 
-function DebugInfo() {
+const DebugInfo:React.FC = () => {
   // timer utiliser pour contrôle du rendu ou non du composant
   const [timer, setTimer] = useState(0);
   const [toggleEmoji, setToggleEmoji] = useState(false);
@@ -47,7 +47,7 @@ function DebugInfo() {
   
 
   return (
-    <div className="DebugInfo">
+    <div className="debug-info">
         {/* <h1>DebugInfo timer = {timer}</h1> */}
         <p>DebugInfo::strState = &apos;local to Index&apos;</p>
         <p>DebugInfo::count = &apos;&apos;</p>
@@ -55,6 +55,6 @@ function DebugInfo() {
         {/* <p>DebugInfo::GeneralStore::atom = &apos;{testAtom}&apos;</p> */}
     </div>
   );
-}
+};
 
 export default DebugInfo;

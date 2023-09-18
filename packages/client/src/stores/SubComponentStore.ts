@@ -9,14 +9,14 @@ type StoreValue = {
 }
 
 const initialState: StoreValue = {
-    anotherName: 'another initialized value',
+    anotherName: 'anotherName initialized value',
 };
 
-function initStore(initialState:StoreValue): {SubComponentStore:any, SubComponentStoreAtoms:StoreAtoms} {
+function initStore(initState:StoreValue): {SubComponentStore:any, SubComponentStoreAtoms:StoreAtoms} {
   const store = createStore();
-  const anotherNameAtom = atom<string>('anotherNameAtomUndefined');
+  const anotherNameAtom = atom<string>('anotherName not initialized');
   anotherNameAtom.debugLabel = "SubComponentStore::anotherNameAtom";
-  store.set(anotherNameAtom, initialState.anotherName); // Ajoutez cet atome d'état au magasin
+  store.set(anotherNameAtom, initState.anotherName); // Ajoutez cet atome d'état au magasin
   return {SubComponentStore:store, SubComponentStoreAtoms:{'anotherNameAtom': anotherNameAtom}};
 }
 

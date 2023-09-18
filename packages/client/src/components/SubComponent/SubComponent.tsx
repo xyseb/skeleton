@@ -3,7 +3,7 @@ import SubComponentChild from './SubComponentChild/SubComponentChild';
 
 import './SubComponent.scss';
 
-function SubComponent() {
+const SubComponent:React.FC = () => {
   
   useEffect(() => {
     console.log("SubComponent::render::first");
@@ -22,7 +22,7 @@ function SubComponent() {
   
 
   return (
-    <div className="SubComponent">
+    <div className="sub-component">
         <p className='left indent4'>&lt;SubComponent&gt;</p>
         <SubComponentChild/>
         <p className='left indent4'>&lt;SubComponent/&gt;</p>

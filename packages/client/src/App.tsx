@@ -4,16 +4,16 @@ import { Provider as JotaiProvider, useAtomValue } from "jotai";
 import GeneralStore, { GeneralStoreAtoms } from './stores/GeneralStore';
 import useSharedCounter from './hooks/useSharedCounter';
 
-import Index from './components/Index/Index';
+import IndexPage from './components/Index/IndexPage';
 import DebugInfo from './components/DebugInfo/DebugInfo';
 
-import reactLogo from './assets/react.svg';
-import jotaiLogo from './assets/jotai.png';
+// import reactLogo from './assets/react.svg';
+// import jotaiLogo from './assets/jotai.png';
 import './App.scss';
 
-function App() {
+const App:React.FC = () => {
     // timer utiliser pour contrôle du rendu ou non du composant
-    const [timer, setTimer] = useState(0)
+    const [timer, setTimer] = useState(0);
     const [indexIsVisible, setIndexIsVisible] = useState(true);
 
     const { hookCount, setSharedCount } = useSharedCounter();
@@ -50,9 +50,9 @@ function App() {
     return (
         <>
             <DevTools />
-            <div className="App">
+            <div className="app">
                 <p className="left c1">&lt;App&gt;</p>
-                <p className="left c2 indent1">&lt;Provider store="GeneralStore"&gt;</p>
+                <p className="left c2 indent1">&lt;Provider store=&quot;GeneralStore&quot;&gt;</p>
                 <JotaiProvider store={GeneralStore}>
                     {/* <div>
                         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
@@ -67,7 +67,7 @@ function App() {
                     </div> */}
                     <h2 className="indent1">App::timer = {timer}</h2>
                     <div className="indent1"><button onClick={() => setIndexIsVisible(!indexIsVisible)}>indexIsVisible = {indexIsVisible ? "True" : "False"}</button></div>
-                    {indexIsVisible && <Index />}
+                    {indexIsVisible && <IndexPage />}
                     <div className="debug">
                         <div className='app-info'>
                             <p>Index::strState = &apos;local to Index&apos;</p>
@@ -83,6 +83,6 @@ function App() {
             </div>
         </>
     );
-}
+};
 
 export default App;

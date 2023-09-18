@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
-import './Index.scss';
+import './IndexPage.scss';
 import useSharedCounter from '../../hooks/useSharedCounter';
 import { Provider, atom, useAtom, useAtomValue, useStore } from 'jotai';
 import GeneralStore, { GeneralStoreAtoms } from '../../stores/GeneralStore';
 import SubComponent from '../SubComponent/SubComponent';
-import SubComponentStore, { anotherAtom } from '../../stores/SubComponentStore';
+import SubComponentStore, { SubComponentStoreAtoms } from '../../stores/SubComponentStore';
 
 export const atomToggle = atom<boolean>(true);
 atomToggle.debugLabel = "Index::atomToggle";
 
-function Index() {
+const IndexPage:React.FC = () => {
     // timer utiliser pour contrôle du rendu ou non du composant
     const [timer, setTimer] = useState(0);
     const [toggleEmoji, setToggleEmoji] = useState(false);
@@ -23,9 +23,9 @@ function Index() {
     const subComponentStore = useStore({ store: SubComponentStore });
 
     const a = generalStore.get(GeneralStoreAtoms.centreNameAtom);
-    const a2 = generalStore.get(anotherAtom);
+    const a2 = generalStore.get(SubComponentStoreAtoms.anotherNameAtom);
     const a3 = generalStore.get(atomToggle);
-    const b = subComponentStore.get(anotherAtom);
+    const b = subComponentStore.get(SubComponentStoreAtoms.anotherNameAtom);
     const b2 = subComponentStore.get(GeneralStoreAtoms.centreNameAtom);
     const b3 = subComponentStore.get(atomToggle);
     console.log('generalStore:', generalStore);
@@ -41,20 +41,20 @@ function Index() {
 
 
     useEffect(() => {
-        console.log("Index::render::first");
+        console.log("IndexPage::render::first");
 
         // const intervalId = setInterval(() => {
         //   setTimer(timer => timer + 1);
         // }, 2000);
 
         return () => {
-            console.log("Index::cleanup");
+            console.log("IndexPage::cleanup");
             // clearInterval(intervalId);
         };
     }, []);
 
     useEffect(() => {
-        console.log("Index::render::counter-changes");
+        console.log("IndexPage::render::counter-changes");
 
     }, [count, toggleEmoji]);
 
@@ -62,13 +62,13 @@ function Index() {
 
 
     return (
-        <div className="Index">
-            <p className="left c3 indent2">&lt;Index&gt;</p>
+        <div className="index-page">
+            <p className="left c3 indent2">&lt;IndexPage&gt;</p>
             <h2>Index::timer = {timer}</h2>
             <button onClick={() => setTestAtom(!testAtom)}>Test changing an Atom state: {!testAtom ? '🙈' : '🙉'}</button>
             {testAtom &&
                 <div className="card">
-                    <p className="left c4 indent1">&lt;div&gt;</p>
+                    <p className="left c41 indent1">&lt;div&gt;</p>
                     <button onClick={() => setToggleEmoji(!toggleEmoji)}>Render Index again {toggleEmoji ? '🙈' : '🙉'}</button>
                     <br />
                     <button onClick={() => setStrState("Updated state")}>StrState = {strState}</button>
@@ -78,19 +78,19 @@ function Index() {
                     <button onClick={() => setSharedCount(hookCount + 1)}>
                         hookCount is {hookCount}
                     </button>
-                    <p className="left c4 indent1">&lt;div/&gt;</p>
+                    <p className="left c41 indent1">&lt;div/&gt;</p>
                 </div>
             }
-            <div className="SubIndex">
+            <div className="sub-index">
                 <Provider store={SubComponentStore}>
-                    <p className="left c4 indent3">&lt;Provider store="SubComponentStore"&gt;</p>
+                    <p className="left c4 indent3">&lt;Provider store=&quot;SubComponentStore&quot;&gt;</p>
                     <SubComponent />
                     <p className="left c4 indent3">&lt;Provider/&gt;</p>
                 </Provider>
             </div>
-            <p className="left c3 indent2">&lt;Index/&gt;</p>
+            <p className="left c3 indent2">&lt;IndexPage/&gt;</p>
         </div>
     );
-}
+};
 
-export default Index;
+export default IndexPage;

@@ -1,6 +1,12 @@
 import {useState, useEffect} from 'react';
 
-export default function useSharedCounter() {
+interface ISharedCounterCustomHook {
+    hookCount: number;
+    setSharedCount: (val:number) => void;
+    getSharedCount: () => number;
+}
+
+export default function useSharedCounter():ISharedCounterCustomHook {
     const [hookCount, setHookCount] = useState(0);
 
     // useEffect(() => {

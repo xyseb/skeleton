@@ -2,18 +2,18 @@ import { useEffect, useState } from 'react';
 import './SubComponentChild.scss';
 import { useStore } from 'jotai';
 import GeneralStore, { GeneralStoreAtoms } from '../../../stores/GeneralStore';
-import SubComponentStore, { anotherAtom } from '../../../stores/SubComponentStore';
-import { atomToggle } from '../../Index/Index';
+import SubComponentStore, { SubComponentStoreAtoms } from '../../../stores/SubComponentStore';
+import { atomToggle } from '../../Index/IndexPage';
 
 
-function SubComponentChild() {
+const SubComponentChild:React.FC = () => {
     const generalStore = useStore({ store: GeneralStore });
     const subComponentStore = useStore({ store: SubComponentStore });
 
     const a = generalStore.get(GeneralStoreAtoms.centreNameAtom);
-    const a2 = generalStore.get(anotherAtom);
+    const a2 = generalStore.get(SubComponentStoreAtoms.anotherNameAtom);
     const a3 = generalStore.get(atomToggle);
-    const b = subComponentStore.get(anotherAtom);
+    const b = subComponentStore.get(SubComponentStoreAtoms.anotherNameAtom);
     const b2 = subComponentStore.get(GeneralStoreAtoms.centreNameAtom);
     const b3 = subComponentStore.get(atomToggle);
     console.log('SubComponentChild::generalStore:', generalStore);
@@ -42,7 +42,7 @@ function SubComponentChild() {
 
 
     return (
-        <div className="SubComponentChild">
+        <div className="sub-component-child">
             <p className="left indent4">&lt;SubComponentChild&gt;</p>
             <p>ici val from substore</p>
             <p className="left indent4  ">&lt;SubComponentChild/&gt;</p>

@@ -1,13 +1,12 @@
-.App {
+.app {
     width: 100%;
     margin: 0;
     padding: .5rem 0;
     height: 90vh;
-    // border: 2px solid #117A65 !important;
 
     .left {
         &.c2 {
-            color: #117A65;
+            color: red;
         }
     }
 
