@@ -10,7 +10,7 @@ const SubComponentChild: React.FC = () => {
     const centreNameAtomValue = useAtomValue(GeneralStoreAtoms.centreNameAtom);
 
     const generalStore = useStore({ store: GeneralStore });
-    const subComponentStore = useStore({ store: SubComponentStore });
+    const subComponentStore = useStore(SubComponentStore);
 
     const a = generalStore.get(GeneralStoreAtoms.centreNameAtom);
     const a2 = generalStore.get(SubComponentStoreAtoms.anotherNameAtom);
