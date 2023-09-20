@@ -4,16 +4,12 @@ import useSharedCounter from '../../hooks/useSharedCounter';
 import { atom, useAtom, useAtomValue, useStore } from 'jotai';
 import GeneralStore, { GeneralStoreAtoms } from '../../stores/GeneralStore';
 
-//const atomToggle = atom<boolean>(true);
-
 const DebugInfo:React.FC = () => {
   // timer utiliser pour contrôle du rendu ou non du composant
   const [timer, setTimer] = useState(0);
-  const [toggleEmoji, setToggleEmoji] = useState(false);
-  const [strState, setStrState] = useState("Initial state");
 
   const [count, setCount] = useState(0);
-  const {hookCount, setSharedCount} = useSharedCounter();
+  const {hookCount, setSharedCount, getSharedCount} = useSharedCounter();
 
 //   const [testAtom, setTestAtom] = useAtom(atomToggle);
 //   const generalStore = useStore({store: GeneralStore});
@@ -21,9 +17,6 @@ const DebugInfo:React.FC = () => {
 //   const a = generalStore.get(centreNameAtom);
 //   console.log('a:', a);
 //   console.log();
-  
-  
-  
   
   useEffect(() => {
     console.log("Index::render::first");
@@ -41,7 +34,7 @@ const DebugInfo:React.FC = () => {
   useEffect(() => {
     console.log("Index::render::counter-changes");
 
-  }, [count, toggleEmoji]);
+  }, [count]);
 
   console.log("Index::render");
   
@@ -49,10 +42,11 @@ const DebugInfo:React.FC = () => {
   return (
     <div className="debug-info ml-1">
         {/* <h1>DebugInfo timer = {timer}</h1> */}
-        <p>DebugInfo::strState = &apos;local to Index&apos;</p>
-        <p>DebugInfo::count = &apos;&apos;</p>
-        <p>DebugInfo::hookCount = &apos;{hookCount}&apos;</p>
         {/* <p>DebugInfo::GeneralStore::atom = &apos;{testAtom}&apos;</p> */}
+        <p>Index::count = &apos;&apos;</p>
+        <p>Index::useSharedCounter() = &apos;{hookCount}&apos;</p>
+        <p>Index::useSharedCounter().getSharedCount() = &apos;{getSharedCount()}&apos;</p>
+        <p>Index::useAtomValue(centreNameAtom) = &apos;&apos;</p>
     </div>
   );
 };

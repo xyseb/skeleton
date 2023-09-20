@@ -3,7 +3,11 @@ import SubComponentChild from './SubComponentChild/SubComponentChild';
 
 import './SubComponent.scss';
 
-const SubComponent:React.FC = () => {
+interface ownProps {
+  indexPageTestState:boolean;
+}
+
+const SubComponent:React.FC<ownProps> = (props) => {
   
   useEffect(() => {
     console.log("SubComponent::render::first");
@@ -25,7 +29,7 @@ const SubComponent:React.FC = () => {
     <div className="sub-component ml-1">
         <p className='left'>&lt;SubComponent&gt;</p>
         <div className="bl-sub-component">
-          <SubComponentChild/>
+          <SubComponentChild indexPageTestState={props.indexPageTestState}/>
         </div>
         <p className='left'>&lt;SubComponent/&gt;</p>
     </div>

@@ -5,8 +5,11 @@ import GeneralStore, { GeneralStoreAtoms } from '../../../stores/GeneralStore';
 import SubComponentStore, { SubComponentStoreAtoms } from '../../../stores/SubComponentStore';
 import { atomToggle } from '../../Index/IndexPage';
 
+interface ownProps {
+    indexPageTestState:boolean;
+}
 
-const SubComponentChild: React.FC = () => {
+const SubComponentChild: React.FC<ownProps> = (props) => {
     const centreNameAtomValue = useAtomValue(GeneralStoreAtoms.centreNameAtom);
 
     const generalStore = useStore({ store: GeneralStore });
@@ -47,7 +50,7 @@ const SubComponentChild: React.FC = () => {
         <div className="sub-component-child ml-1">
             <p className="left">&lt;SubComponentChild&gt;</p>
             <div className="ml-1 bl-sub-component-child">
-                <p>Index::strState = &apos;local to Index&apos;</p>
+                <p>Index::testState (P.D.) = &apos; {!props.indexPageTestState ? '🙈' : '🙉'}&apos;</p>
                 <p>Index::count = &apos;&apos;</p>
                 <p>Index::hookCount = &apos;{/*hookCount*/}&apos;</p>
                 <p>Index::useAtomValue(centreNameAtom) = &apos;{centreNameAtomValue}&apos;</p>

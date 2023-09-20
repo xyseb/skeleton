@@ -13,9 +13,12 @@ const App:React.FC = () => {
     const withDevTools = true;
     // timer utiliser pour contrôle du rendu ou non du composant
     const [timer, setTimer] = useState(0);
+
     const [indexIsVisible, setIndexIsVisible] = useState(true);
 
-    const { hookCount, setSharedCount } = useSharedCounter();
+    const [testState, setTestState] = useState(true);
+
+    const { hookCount, setSharedCount, getSharedCount } = useSharedCounter();
     // Créez une ref pour stocker la valeur précédente de hookCount
     const prevHookCountRef = useRef<number | null>(null);
 
@@ -56,14 +59,18 @@ const App:React.FC = () => {
                     <JotaiProvider store={GeneralStore}>
                         <div className="ml-2">
                             <h2 className="left">App::timer = {timer}</h2>
-                            <button onClick={() => setIndexIsVisible(!indexIsVisible)}>indexIsVisible = {indexIsVisible ? "True" : "False"}</button>
-                            {indexIsVisible && <IndexPage />}
+                            <button onClick={() => setTestState(!testState)}>App::setTestState(!testState) {!testState ? '🙈' : '🙉'}</button>
+                            <button onClick={() => setIndexIsVisible(!indexIsVisible)} className='ml-5px'>indexIsVisible = {indexIsVisible ? "True" : "False"}</button>
+
+                            {indexIsVisible && <IndexPage/>}
                             <div className="debug">
                                 <p className="left c1">&lt;div className=&quot;app-info&quot;&gt;</p>
                                 <div className='app-info ml-1'>
-                                    <p>Index::strState = &apos;local to Index&apos;</p>
+                                    {/* <p>Index::strState = &apos;local to Index&apos;</p> */}
+                                    <p>App::testState = &apos;{!testState ? '🙈' : '🙉'}&apos;</p>
                                     <p>Index::count = &apos;&apos;</p>
-                                    <p>Index::hookCount = &apos;{hookCount}&apos;</p>
+                                    <p>Index::useSharedCounter() = &apos;{hookCount}&apos;</p>
+                                    <p>Index::useSharedCounter().getSharedCount() = &apos;{getSharedCount()}&apos;</p>
                                     <p>Index::useAtomValue(centreNameAtom) = &apos;{centreNameAtomValue}&apos;</p>
                                 </div>
                                 <p className="left c1">&lt;/div&gt;</p>
