@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { DevTools } from 'jotai-devtools';
 import { Provider as JotaiProvider, useAtomValue } from "jotai";
 import GeneralStore, { GeneralStoreAtoms } from './stores/GeneralStore';
+// import StoreProvider from './stores/GeneralStore2';
 import useSharedCounter from './hooks/useSharedCounter';
 
 import IndexPage from './components/Index/IndexPage';
@@ -9,8 +10,11 @@ import DebugInfo from './components/DebugInfo/DebugInfo';
 
 import './App.scss';
 
+import { test2Atom } from './stores/GeneralAtoms';
+import StoreProvider from './stores/GeneralStore2';
+
 const App:React.FC = () => {
-    const withDevTools = true;
+    const isDev = import.meta.env.MODE === 'development';
     // timer utiliser pour contrôle du rendu ou non du composant
     const [timer, setTimer] = useState(0);
 
@@ -51,7 +55,7 @@ const App:React.FC = () => {
 
     return (
         <>
-            { withDevTools && <DevTools /> }
+            { isDev && <DevTools /> }
             <div className="app">
                 <p className="left c1">&lt;App&gt;</p>
                 <div className="ml-1 bl-app">
