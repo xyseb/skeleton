@@ -25,6 +25,23 @@
     .bl-app {
         border-left: 1px dashed #117A65;
     }
+
+    & > div > header {
+        & > p {
+            margin-top: 0 !important;
+        }
+
+        & nav > a {
+            padding: 8px;
+            text-decoration: underline;
+
+        }
+
+        & nav > a[aria-current] {
+            text-decoration: none;
+            border: 1px dashed #117A65;
+        }
+}
     // button {
     //     border-radius: 8px;
     //     border: 1px solid transparent;

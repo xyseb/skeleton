@@ -10,10 +10,10 @@ import PageStateContext, { PageStateContextProvider } from '../../contexts/PageC
 export const atomToggle = atom<boolean>(true);
 atomToggle.debugLabel = "Index::atomToggle";
 
-const IndexPage:React.FC = () => {
+const IndexPage: React.FC = () => {
     // timer utiliser pour contrôle du rendu ou non de ce composant
     const [timer, setTimer] = useState(0);
-    
+
     const [strState, setStrState] = useState("Initial state");
 
     const [count, setCount] = useState(0);
@@ -44,9 +44,6 @@ const IndexPage:React.FC = () => {
     console.log('subComponentStore::b2:', b2);
     console.log('subComponentStore::b3:', b3);
 
-
-
-
     useEffect(() => {
         console.log("IndexPage::render::first");
 
@@ -72,13 +69,13 @@ const IndexPage:React.FC = () => {
         <div className="index-page">
             <PageStateContextProvider>
                 <p className="left c3">&lt;IndexPage&gt;</p>
-                <div className="ml-1 bl-index-page">
+                <div className="ml-1 bl-dashed">
 
-                <div>
-                    <h2>Index::timer = {timer}</h2>
-                    <button onClick={() => setTestState(!testState)}>Index::setTestState(!testState) {!testState ? '🙈' : '🙉'}</button>
-                    <button onClick={() => setTestAtom(!testAtom)} className='ml-5px'>Index::setTestAtom(!testAtom): {!testAtom ? '🙈' : '🙉'}</button>
-                </div>
+                    <div>
+                        <h2>Index::timer = {timer}</h2>
+                        <button onClick={() => setTestState(!testState)}>Index::setTestState(!testState) {!testState ? '🙈' : '🙉'}</button>
+                        <button onClick={() => setTestAtom(!testAtom)} className='ml-5px'>Index::setTestAtom(!testAtom): {!testAtom ? '🙈' : '🙉'}</button>
+                    </div>
                     <div className="card">
                         <p className="left c3">&lt;div&gt;</p>
                         <div>
@@ -92,13 +89,13 @@ const IndexPage:React.FC = () => {
                         </div>
                         <p className="left c3">&lt;div/&gt;</p>
                     </div>
-                <div className="sub-index">
-                    <Provider store={SubComponentStore}>
-                        <p className="left c4">&lt;Provider store=&quot;SubComponentStore&quot;&gt;</p>
-                        <SubComponent indexPageTestState={testState} />
-                        <p className="left c4">&lt;Provider/&gt;</p>
-                    </Provider>
-                </div>
+                    <div className="sub-index">
+                        <Provider store={SubComponentStore}>
+                            <p className="left c4">&lt;Provider store=&quot;SubComponentStore&quot;&gt;</p>
+                            <SubComponent indexPageTestState={testState} />
+                            <p className="left c4">&lt;Provider/&gt;</p>
+                        </Provider>
+                    </div>
                 </div>
                 <p className="left c3">&lt;IndexPage/&gt;</p>
             </PageStateContextProvider>
