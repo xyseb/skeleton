@@ -2,16 +2,17 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import './GeneralProviderLessAtomsPage.scss';
 import { atom, useAtom } from 'jotai';
 
-// export const atomToggle = atom<boolean>(true);
-// atomToggle.debugLabel = "GeneralProviderLessAtomsPage::atomToggle";
-const atom1 = atom(0)
-const atom2 = atom(0)
+const provLessAtom1 = atom<number>(0)
+provLessAtom1.debugLabel = "GeneralProviderLessAtomsPage::atomToggle";
+const provLessAtom2 = atom(0)
+provLessAtom2.debugLabel = "GeneralProviderLessAtomsPage::atomToggle";
+export {provLessAtom1, provLessAtom2};
 
 const GeneralProviderLessAtomsPage:React.FC = () => {
     // timer utiliser pour contrôle du rendu ou non de ce composant
     const [timer, setTimer] = useState(0);
-    const [counter1, setCounter1] = useAtom(atom1);
-    const [counter2, setCounter2] = useAtom(atom2);
+    const [counter1, setCounter1] = useAtom(provLessAtom1);
+    const [counter2, setCounter2] = useAtom(provLessAtom2);
     // const counter3 = counter2; // Simple copie is synchronized
     // const counter4 = useRef(counter1); // Usefull as initialValue. Better is to declare it first and pass it to useState
     // const counter5 = useMemo(() => counter1, [counter1]); // possible imputities @TODO check
