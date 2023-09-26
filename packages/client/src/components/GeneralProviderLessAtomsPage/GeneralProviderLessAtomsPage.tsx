@@ -13,9 +13,9 @@ const GeneralProviderLessAtomsPage:React.FC = () => {
     const [timer, setTimer] = useState(0);
     const [counter1, setCounter1] = useAtom(provLessAtom1);
     const [counter2, setCounter2] = useAtom(provLessAtom2);
-    // const counter3 = counter2; // Simple copie is synchronized
-    // const counter4 = useRef(counter1); // Usefull as initialValue. Better is to declare it first and pass it to useState
-    // const counter5 = useMemo(() => counter1, [counter1]); // possible imputities @TODO check
+    const counter3 = counter2; // Simple copie is synchronized
+    const counter4 = useRef(counter1); // Usefull as initialValue. Better is to declare it first and pass it to useState
+    const counter5 = useMemo(() => counter1, [counter1]); // possible imputities @TODO check
 
     // useEffect(() => {
     //     console.log("GeneralProviderLessAtomsPage::render::first");
@@ -55,11 +55,11 @@ const GeneralProviderLessAtomsPage:React.FC = () => {
                 <br/>
                 GeneralProviderLessAtomsPage::counter2: {counter2}
                 <br/>
-                {/* GeneralProviderLessAtomsPage::counter3: {counter3} */}
+                GeneralProviderLessAtomsPage::counter3: {counter3}
                 <br/>
-                {/* GeneralProviderLessAtomsPage::counter4: {counter4.current} */}
+                GeneralProviderLessAtomsPage::counter4: {counter4.current}
                 <br />
-                {/* GeneralProviderLessAtomsPage::counter5: {counter5} */}
+                GeneralProviderLessAtomsPage::counter5: {counter5}
                 <br/>
             </p>
             </div>
