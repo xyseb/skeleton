@@ -8,6 +8,7 @@ import useSharedCounter from './hooks/useSharedCounter';
 
 import IndexPage from './components/Index/IndexPage';
 import GeneralProviderLessAtomsPage from './components/GeneralProviderLessAtomsPage/GeneralProviderLessAtomsPage';
+import GeneralApiProviderLessAtomsPage from './components/GeneralApiProviderLessAtomsPage/GeneralApiProviderLessAtomsPage';
 import DebugInfo from './components/DebugInfo/DebugInfo';
 
 import './App.scss';
@@ -67,6 +68,7 @@ const App: React.FC = () => {
                             <NavLink className={({ isActive }) => isActive ? 'nav is-active' : 'nav'} to="/home"><span>HOME</span></NavLink>
                             <NavLink className={({ isActive }) => isActive ? 'nav is-active' : 'nav'} to="/use-state"><span>use-state</span></NavLink>
                             <NavLink className={({ isActive }) => isActive ? 'nav is-active' : 'nav'} to="/provider-less-atoms"><span>provider-less-atoms</span></NavLink>
+                            <NavLink className={({ isActive }) => isActive ? 'nav is-active' : 'nav'} to="/api-provider-less-atoms"><span>api-provider-less-atoms</span></NavLink>
                             {/* <NavLink className={({ isActive }) => isActive ? 'nav is-active' : 'nav' } to="/404"><span>404</span></NavLink> */}
                         </nav>
                         <p className="left c1 ml-1">&lt;/nav&gt;</p>
@@ -74,6 +76,7 @@ const App: React.FC = () => {
                     </header>
                     <Routes>
                         <Route path="/provider-less-atoms" element={<GeneralProviderLessAtomsPage />} />
+                        <Route path="/api-provider-less-atoms" element={<GeneralApiProviderLessAtomsPage />} />
                     </Routes>
                     <p className="left c2">&lt;Provider store=&quot;GeneralStore&quot;&gt;</p>
                     <JotaiProvider store={GeneralStore}>
